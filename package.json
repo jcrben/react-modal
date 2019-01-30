@@ -2,11 +2,11 @@
   "name": "react-modal",
   "version": "3.8.1",
   "description": "Accessible modal dialog component for React.JS",
-  "main": "./lib/index.js",
-  "module": "./lib/index.js",
+  "main": "./dist/react-modal.js",
+  "module": "./dist/react-modal.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactjs/react-modal.git"
+    "url": "https://github.com/jcrben/react-modal.git"
   },
   "homepage": "https://github.com/reactjs/react-modal",
   "bugs": "https://github.com/reactjs/react-modal/issues",

@@ -535,6 +535,7 @@ Modal.propTypes = {
   shouldFocusAfterRender: _propTypes2.default.bool,
   shouldCloseOnOverlayClick: _propTypes2.default.bool,
   shouldReturnFocusAfterClose: _propTypes2.default.bool,
+  stopPropagationOnClickFor: _propTypes2.default.arrayOf(_propTypes2.default.oneOf(['content', 'overlay'])),
   parentSelector: _propTypes2.default.func,
   aria: _propTypes2.default.object,
   data: _propTypes2.default.object,
@@ -555,6 +556,7 @@ Modal.defaultProps = {
   shouldCloseOnEsc: true,
   shouldCloseOnOverlayClick: true,
   shouldReturnFocusAfterClose: true,
+  stopPropagationOnClickFor: [],
   parentSelector: function parentSelector() {
     return document.body;
   }
@@ -1599,6 +1601,10 @@ var ModalPortal = function (_Component) {
     };
 
     _this.handleOverlayOnClick = function (event) {
+      if (_this.props.stopPropagationOnClickFor.includes('overlay')) {
+        event.stopPropagation();
+      }
+
       if (_this.shouldClose === null) {
         _this.shouldClose = true;
       }
@@ -1623,7 +1629,10 @@ var ModalPortal = function (_Component) {
       }
     };
 
-    _this.handleContentOnClick = function () {
+    _this.handleContentOnClick = function (event) {
+      if (_this.props.stopPropagationOnClickFor.includes('content')) {
+        event.stopPropagation();
+      }
       _this.shouldClose = false;
     };
 
